@@ -178,7 +178,7 @@ AutomaticInvoker invoker = new AutomaticInvoker();
 
 //Init
 ConsistentNode calculateFactorialNode = new ConsistentNode(() =>
-                                            new FactorialCommand(5,
+                                            new FactorialCommand(number,
                                                                  (factorial) => result = factorial));
 
 
