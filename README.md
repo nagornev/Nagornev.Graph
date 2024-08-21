@@ -21,6 +21,10 @@ dotnet add package Nagornev.Graph
 Use this code to write console lines:
 
 ``` C#
+using Nagornev.Graph.Commands;
+using Nagornev.Graph.Invokers;
+using Nagornev.Graph.Nodes;
+
 AutomaticInvoker invoker = new AutomaticInvoker();
 
 //Init

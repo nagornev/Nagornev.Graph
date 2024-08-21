@@ -80,17 +80,12 @@ namespace Nagornev.Graph.Nodes
 
         protected virtual Node HandleException(Exception exception)
         {
-            if (_exceptionSuccessors.ContainsKey(exception.GetType()))
-            {
-                ExceptionNode exceptionNode = _exceptionSuccessors[exception.GetType()];
-                exceptionNode.SetCatchedException(exception);
-
-                return exceptionNode;
-            }
-
             foreach (Type key in _exceptionSuccessors.Keys)
             {
-                if (key.IsSubclassOf(exception.GetType()))
+                Type exceptionType = exception.GetType();
+
+                if (key == exceptionType ||
+                    exceptionType.IsSubclassOf(key))
                 {
                     ExceptionNode exceptionNode = _exceptionSuccessors[key];
                     exceptionNode.SetCatchedException(exception);
